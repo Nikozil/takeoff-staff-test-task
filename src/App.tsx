@@ -1,6 +1,5 @@
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.css';
 import store from './redux/store';
 import Views from './views';
 function App() {

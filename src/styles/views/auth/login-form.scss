@@ -1,0 +1,40 @@
+.login-form {
+  &__warning {
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: $white;
+    margin-bottom: 24px;
+  }
+  &__spin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ant-form-item-label > label {
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: $white;
+  }
+
+  .ant-form-item-required::before {
+    display: none !important;
+  }
+
+  .ant-form-item-control-input-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ant-form-item-explain-error {
+    color: $white;
+  }
+
+  button {
+    background-color: $support-blue;
+    border: none;
+  }
+}
