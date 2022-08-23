@@ -4,19 +4,7 @@ import React from 'react';
 import { signOut } from 'redux/actions/Auth';
 
 const ContactsList = () => {
-  const dispatch = useAppDispatch();
-  const signOutHandler = () => {
-    dispatch(signOut());
-    console.log('signOut');
-  };
-  return (
-    <article>
-      ContactsList
-      <Button type="primary" danger onClick={signOutHandler}>
-        Выход
-      </Button>
-    </article>
-  );
+  return <article>ContactsList</article>;
 };
 
 export default ContactsList;
