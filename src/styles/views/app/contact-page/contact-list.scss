@@ -1,0 +1,25 @@
+.contacts-list {
+  height: 70vh;
+  overflow: auto;
+
+  scrollbar-color: $white;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 0.2em;
+    height: 0.2em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $white;
+  }
+
+  .ant-list-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 139px;
+  }
+  .ant-list-item-meta {
+    flex: 0;
+  }
+}

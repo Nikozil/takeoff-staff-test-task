@@ -1,1 +1,16 @@
-{ "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }] }
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Иван",
+      "phone": "+7 903 333 33 33",
+      "mail": "ivan@mail.ru"
+    },
+    {
+      "id": 2,
+      "name": "Владимир",
+      "phone": "+7 903 333 33 35",
+      "mail": "vladimir@mail.ru"
+    }
+  ]
+}

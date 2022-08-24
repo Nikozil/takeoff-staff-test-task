@@ -7,6 +7,18 @@
   align-items: center;
 
   background: linear-gradient($support-blue 40%, rgba($support-blue, 0.5));
+  &__exit-btn {
+    min-width: 75px;
+    span {
+      color: $white;
+    }
+  }
+  .ant-btn-dangerous.ant-btn-primary[disabled] {
+    background: #ff4d4f;
+    border-color: #ff4d4f;
+    cursor: pointer;
+  }
+
   h1 {
     color: $text;
   }

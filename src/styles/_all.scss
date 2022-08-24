@@ -3,3 +3,7 @@
 @import './shared-components';
 @import './views/auth';
 @import './views/app';
+
+.ant-btn {
+  border-radius: 7px;
+}

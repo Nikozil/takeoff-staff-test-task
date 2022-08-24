@@ -25,6 +25,13 @@ export const AuthSlice = createSlice({
       })
       .addCase(signOut.fulfilled, (state, action) => {
         state.token = null;
+        state.isLogoutLoading = false;
+      })
+      .addCase(signOut.pending, (state, action) => {
+        state.isLogoutLoading = true;
+      })
+      .addCase(signOut.rejected, (state, action) => {
+        state.isLogoutLoading = false;
       });
   },
 });

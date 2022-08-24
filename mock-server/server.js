@@ -30,6 +30,7 @@ server.post('/auth/login/', (req, res) => {
     res.sendStatus(401);
   }
 });
+
 server.post('/auth/logout/', (req, res) => {
   res.sendStatus(200);
 });

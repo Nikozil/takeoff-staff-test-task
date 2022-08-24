@@ -1,10 +1,15 @@
-import { Button } from 'antd';
-import { useAppDispatch } from 'hooks/redux-hooks';
-import React from 'react';
-import { signOut } from 'redux/actions/Auth';
+import Contols from './Contols';
+import List from './List';
+import Search from './Search';
 
-const ContactsList = () => {
-  return <article>ContactsList</article>;
+const ContactsPage = () => {
+  return (
+    <article className="contacts-page">
+      <Contols />
+      <Search />
+      <List />
+    </article>
+  );
 };
 
-export default ContactsList;
+export default ContactsPage;
