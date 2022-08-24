@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CONTACTS_CONFIG } from 'config/ContactsConfig';
-import { getContacts } from 'redux/actions/Contacts';
+import { deleteContactById, getContacts } from 'redux/actions/Contacts';
 
 const initContacts = { ...CONTACTS_CONFIG };
 
@@ -22,6 +22,16 @@ export const ContactsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getContacts.rejected, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(deleteContactById.fulfilled, (state, action) => {
+        state.list = state.list.filter(({ id }) => id !== action.payload);
+        state.isLoading = false;
+      })
+      .addCase(deleteContactById.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteContactById.rejected, (state, action) => {
         state.isLoading = false;
       });
   },

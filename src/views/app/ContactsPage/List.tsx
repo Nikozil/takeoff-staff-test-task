@@ -3,7 +3,7 @@ import { List } from 'antd';
 import ColorButton from 'antd-button-color';
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 import React, { useEffect } from 'react';
-import { getContacts } from 'redux/actions/Contacts';
+import { deleteContactById, getContacts } from 'redux/actions/Contacts';
 import { selectFilteredList, selectIsLoading } from 'redux/selectors/Contacts';
 
 const App: React.FC = () => {
@@ -15,6 +15,8 @@ const App: React.FC = () => {
     dispatch(getContacts());
   }, [dispatch]);
 
+  const deleteHandler = (id: number) => dispatch(deleteContactById(id));
+
   return (
     <List
       className="contacts-list"
@@ -25,7 +27,11 @@ const App: React.FC = () => {
         <List.Item
           actions={[
             <ColorButton type="info" icon={<EditOutlined />} />,
-            <ColorButton type="danger" icon={<DeleteOutlined />} />,
+            <ColorButton
+              type="danger"
+              icon={<DeleteOutlined />}
+              onClick={() => deleteHandler(item.id)}
+            />,
           ]}>
           <List.Item.Meta title={<div>{item.name}</div>} />
           <div>{item.phone}</div>

@@ -9,3 +9,12 @@ export const getContacts = createAsyncThunk(
     return contacts;
   }
 );
+
+export const deleteContactById = createAsyncThunk(
+  'contacts/deleteContactById',
+  async (id: number) => {
+    await ContactsService.deleteContact(id);
+
+    return id;
+  }
+);
