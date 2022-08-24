@@ -7,7 +7,11 @@ const initContacts = { ...CONTACTS_CONFIG };
 export const ContactsSlice = createSlice({
   name: 'contacts',
   initialState: initContacts,
-  reducers: {},
+  reducers: {
+    changeSearch: (state, action) => {
+      state.search = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getContacts.fulfilled, (state, action) => {
@@ -22,5 +26,7 @@ export const ContactsSlice = createSlice({
       });
   },
 });
+
+export const { changeSearch } = ContactsSlice.actions;
 
 export default ContactsSlice.reducer;

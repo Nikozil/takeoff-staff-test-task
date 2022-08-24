@@ -4,11 +4,11 @@ import ColorButton from 'antd-button-color';
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 import React, { useEffect } from 'react';
 import { getContacts } from 'redux/actions/Contacts';
-import { selectIsLoading, selectList } from 'redux/selectors/Contacts';
+import { selectFilteredList, selectIsLoading } from 'redux/selectors/Contacts';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
-  const list = useAppSelector(selectList);
+  const list = useAppSelector(selectFilteredList);
   const isLoading = useAppSelector(selectIsLoading);
 
   useEffect(() => {

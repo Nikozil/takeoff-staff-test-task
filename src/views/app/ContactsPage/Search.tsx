@@ -1,9 +1,17 @@
 import { Input } from 'antd';
-import React from 'react';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
+import { ChangeEvent } from 'react';
+import { changeSearch } from 'redux/reducers/ContactsSlice';
+import { selectSearch } from 'redux/selectors/Contacts';
+
+const placeholder = 'Введите имя, телефон или почту';
 
 const Search = () => {
-  const placeholder = 'Введите имя, телефон или почту';
-  const onChange = () => {};
+  const dispatch = useAppDispatch();
+  const value = useAppSelector(selectSearch);
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(changeSearch(e.target.value));
+  };
 
   return (
     <div>
@@ -11,7 +19,7 @@ const Search = () => {
         className="search__input"
         placeholder={placeholder}
         onChange={onChange}
-        // value={value}
+        value={value}
       />
     </div>
   );
