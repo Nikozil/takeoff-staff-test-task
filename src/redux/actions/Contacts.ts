@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import ContactsService from 'services/contacts-service';
+import ContactsService, { ContactDataType } from 'services/contacts-service';
 
 export const getContacts = createAsyncThunk(
   'contacts/getContacts',
@@ -18,3 +18,23 @@ export const deleteContactById = createAsyncThunk(
     return id;
   }
 );
+
+export const createContact = createAsyncThunk(
+  'contacts/createContact',
+  async (data: ContactDataType) => {
+    const contact = await ContactsService.postContact(data);
+
+    return contact;
+  }
+);
+
+export const changeContactById = createAsyncThunk(
+  'contacts/changeContactById',
+  async ({ id, data }: payloadChangeContactType) => {
+    const contact = await ContactsService.patchContact(id, data);
+
+    return contact;
+  }
+);
+
+type payloadChangeContactType = { id: number; data: ContactDataType };

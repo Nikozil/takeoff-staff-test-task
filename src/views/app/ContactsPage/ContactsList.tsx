@@ -2,11 +2,12 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { List } from 'antd';
 import ColorButton from 'antd-button-color';
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
-import React, { useEffect } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import { deleteContactById, getContacts } from 'redux/actions/Contacts';
 import { selectFilteredList, selectIsLoading } from 'redux/selectors/Contacts';
+import { selectedIdType } from '.';
 
-const App: React.FC = () => {
+const ContactsList: React.FC<IContactsList> = ({ setSelectedId }) => {
   const dispatch = useAppDispatch();
   const list = useAppSelector(selectFilteredList);
   const isLoading = useAppSelector(selectIsLoading);
@@ -15,6 +16,7 @@ const App: React.FC = () => {
     dispatch(getContacts());
   }, [dispatch]);
 
+  const changeHandler = (id: number) => setSelectedId(id);
   const deleteHandler = (id: number) => dispatch(deleteContactById(id));
 
   return (
@@ -26,7 +28,11 @@ const App: React.FC = () => {
       renderItem={(item) => (
         <List.Item
           actions={[
-            <ColorButton type="info" icon={<EditOutlined />} />,
+            <ColorButton
+              type="info"
+              icon={<EditOutlined />}
+              onClick={() => changeHandler(item.id)}
+            />,
             <ColorButton
               type="danger"
               icon={<DeleteOutlined />}
@@ -42,4 +48,8 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default ContactsList;
+
+interface IContactsList {
+  setSelectedId: Dispatch<SetStateAction<selectedIdType>>;
+}

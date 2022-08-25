@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { message } from 'antd';
 import { CONTACTS_CONFIG } from 'config/ContactsConfig';
-import { deleteContactById, getContacts } from 'redux/actions/Contacts';
+import {
+  changeContactById,
+  createContact,
+  deleteContactById,
+  getContacts,
+} from 'redux/actions/Contacts';
 
 const initContacts = { ...CONTACTS_CONFIG };
 
@@ -23,6 +29,7 @@ export const ContactsSlice = createSlice({
       })
       .addCase(getContacts.rejected, (state, action) => {
         state.isLoading = false;
+        message.error('Ошибка');
       })
       .addCase(deleteContactById.fulfilled, (state, action) => {
         state.list = state.list.filter(({ id }) => id !== action.payload);
@@ -33,6 +40,34 @@ export const ContactsSlice = createSlice({
       })
       .addCase(deleteContactById.rejected, (state, action) => {
         state.isLoading = false;
+        message.error('Ошибка');
+      })
+      .addCase(createContact.fulfilled, (state, action) => {
+        state.list.push(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(createContact.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(createContact.rejected, (state, action) => {
+        state.isLoading = false;
+        message.error('Ошибка');
+      })
+      .addCase(changeContactById.fulfilled, (state, action) => {
+        const index = state.list.findIndex(
+          ({ id }) => id === action.payload.id
+        );
+
+        state.list[index] = action.payload;
+
+        state.isLoading = false;
+      })
+      .addCase(changeContactById.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(changeContactById.rejected, (state, action) => {
+        state.isLoading = false;
+        message.error('Ошибка');
       });
   },
 });

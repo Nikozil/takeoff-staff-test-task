@@ -10,3 +10,8 @@ export const selectFilteredList = createSelector(
   [selectSearch, selectList],
   filterList
 );
+
+export const selectContactById = (id: number | 'new') =>
+  createSelector([selectList], (list) =>
+    id === 'new' ? null : list.find((item) => item.id === id)
+  );

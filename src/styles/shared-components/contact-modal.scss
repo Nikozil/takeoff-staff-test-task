@@ -1,0 +1,37 @@
+.contact-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 200;
+
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__card {
+    position: relative;
+
+    min-width: 600px;
+    min-height: 300px;
+
+    padding: 20px;
+    padding-top: 50px;
+
+    border-radius: 15px;
+
+    background: $white;
+  }
+
+  &__exit-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+  }
+}
